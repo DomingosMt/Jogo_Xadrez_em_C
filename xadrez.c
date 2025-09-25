@@ -1,7 +1,35 @@
 #include <stdio.h>
 
+void movimentoTorre(int casa)
+{
+    if (casa > 0)
+    {
+        printf("Direita\n");
+        movimentoTorre(casa - 1);
+    }
+}
+
+void movimentoBispo(int casa1, int casa2)
+{
+    if (casa1 > 0 && casa2 > 0)
+    {
+        printf("Cima, Direita\n");
+        movimentoBispo(casa1 - 1, casa2 - 1);
+    }
+}
+
+void movimentoRainha(int casa)
+{
+    if (casa > 0)
+    {
+        printf("Esquerda\n");
+        movimentoRainha(casa - 1);
+    }
+}
+
 int main()
 {
+
     // === Jogo de Xadrez em C ===
 
     // Objetivo:
@@ -9,47 +37,39 @@ int main()
     // Torre - Mover 5 casas superior
     // Rainha - Mover 8 casas para a esquerda
 
-    //Nível Novato
+    // Nível Novato
 
-    //Variáveis de movimento
-    int cima = 0, esquerda = 0, direita = 0, baixo = 0;
+    // Variáveis de movimento
+    int cima = 5, esquerda = 8, direita = 5, baixo = 0;
 
-    // printf("*** JOGO DE XADREZ EM C ***\n\n");
+    printf("*** JOGO DE XADREZ EM C ***\n\n");
 
-    // // Lógica para a movimentação do Bispo | Estrutura while
+    // // Lógica para a movimentação do Bispo | Estrutura recursiva
     printf("Peça: Bispo\n");
-    while ((cima < 5) && (direita < 5))
-    {
-        printf("Cima, Direita\n");
-        cima++;
-        direita++;
-    }
+    movimentoBispo(cima, direita);
 
-    printf("\n"); //Espaçamento
-    
-    // // Lógica para a movimentação da Torre | Estrutura for
+
+    printf("\n"); // Espaçamento
+
+
+    // // Lógica para a movimentação da Torre | Estrutura recursiva
     printf("Peça: Torre\n");
-    for (direita = 0; direita < 5; direita++)
-    {
-        printf("Direita\n");
-    }
+    movimentoTorre(direita);
 
-    printf("\n"); //Espaçamento
+
+    printf("\n"); // Espaçamento
+
 
     // // Lógica para a movimentação da Rainha | Estrutura do-while
     printf("Peça: Rainha\n");
-    do
-    {
-        printf("Esquerda\n");
-        esquerda++;
-    } while (esquerda < 8);
+    movimentoRainha(esquerda);
 
-    printf("\n"); //Espaçamento
 
-    // Nível Aventureiro
+    printf("\n"); // Espaçamento
+    
 
     // Lógica para a movimentação do cavalo | Estrutura de loop aninhadas
-    
+
     printf("Peça: Cavalo\n");
     esquerda = 0;
     while (esquerda < 1)
@@ -62,7 +82,7 @@ int main()
         printf("Esquerda\n");
     }
 
-    //Fim do Jogo
-    
+    // Fim do Jogo
+
     return 0;
 }
